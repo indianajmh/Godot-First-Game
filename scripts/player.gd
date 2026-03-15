@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
 
-const SPEED = 130.0
+const WALK_SPEED = 130.0
+const SPRINT_SPEED = 180.0
 const JUMP_VELOCITY = -300.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -34,9 +35,15 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.play("jump")
 	
 	# Apply movement
-	if direction:
-		velocity.x = direction * SPEED
+	var speed = 0
+	if Input.is_action_pressed("sprint"):
+		speed = SPRINT_SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		speed = WALK_SPEED
+		
+	if direction:
+		velocity.x = direction * speed
+	else:
+		velocity.x = move_toward(velocity.x, 0, speed)
 
 	move_and_slide()
