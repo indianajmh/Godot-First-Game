@@ -256,6 +256,15 @@ limit_bottom = 120
 limit_smoothed = true
 position_smoothing_enabled = true
 
+[node name="ScoreHUD" type="Label" parent="Player/Camera2D" unique_id=72454010]
+offset_left = -140.0
+offset_top = -77.0
+offset_right = -42.0
+offset_bottom = -54.0
+theme_override_fonts/font = ExtResource("8_gee14")
+theme_override_font_sizes/font_size = 8
+text = "Coins: 0"
+
 [node name="Killzone" parent="." unique_id=1552709393 instance=ExtResource("6_p57ef")]
 position = Vector2(0, 104)
 
